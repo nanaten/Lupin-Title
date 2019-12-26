@@ -22,9 +22,11 @@ class MainViewModel : ViewModel() {
         val resCall = sound.load(context, R.raw.title, 1)
 
         val title = title.get()
+        if(title.isNullOrBlank()) return
+
         isVisible.set(true)
         GlobalScope.launch {
-            title?.map {
+            title.map {
                 delay(100)
                 sound.play(resType, 1.0f, 1.0f, 0, 0, 1.0f)
                 typewriter.set(it.toString())
