@@ -21,19 +21,19 @@ class MainViewModel : ViewModel() {
         val resType = sound.load(context, R.raw.typewriter, 1)
         val resCall = sound.load(context, R.raw.title, 1)
 
-        val title = title.get()
-        if(title.isNullOrBlank()) return
+        val fullTitle = title.get()
+        if(fullTitle.isNullOrBlank()) return
 
         isTyping.set(true)
         GlobalScope.launch {
-            title.map {
+            fullTitle.map {
                 delay(150)
                 sound.play(resType, 1.0f, 1.0f, 0, 0, 1.0f)
                 typewriter.set(it.toString())
             }
             delay(150)
             sound.play(resCall, 1.0f, 1.0f, 0, 0, 1.0f)
-            typewriter.set(title)
+            typewriter.set(fullTitle)
             delay(2000)
             isTyping.set(false)
             typewriter.set("")
