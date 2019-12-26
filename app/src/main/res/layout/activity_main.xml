@@ -51,7 +51,7 @@
             android:layout_height="match_parent"
             android:background="#000000"
             android:gravity="center"
-            android:maxLines="2"
+            android:maxLines="1"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="@{viewModel.typewriter}"

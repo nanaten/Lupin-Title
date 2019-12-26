@@ -27,7 +27,7 @@ class MainViewModel : ViewModel() {
         isTyping.set(true)
         GlobalScope.launch {
             title.map {
-                delay(100)
+                delay(150)
                 sound.play(resType, 1.0f, 1.0f, 0, 0, 1.0f)
                 typewriter.set(it.toString())
             }
@@ -39,5 +39,6 @@ class MainViewModel : ViewModel() {
             typewriter.set("")
         }
     }
+
 
 }
