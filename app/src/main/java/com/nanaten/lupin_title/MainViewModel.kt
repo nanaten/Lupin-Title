@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
 class MainViewModel : ViewModel() {
     val title = ObservableField<String>()
     val typewriter = ObservableField<String>()
-    val isVisible = ObservableField<Boolean>()
+    val isTyping = ObservableField<Boolean>()
 
     fun startTitleCall(context: Context) {
         // SoundPool
@@ -24,7 +24,7 @@ class MainViewModel : ViewModel() {
         val title = title.get()
         if(title.isNullOrBlank()) return
 
-        isVisible.set(true)
+        isTyping.set(true)
         GlobalScope.launch {
             title.map {
                 delay(100)
@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
             sound.play(resCall, 1.0f, 1.0f, 0, 0, 1.0f)
             typewriter.set(title)
             delay(2000)
-            isVisible.set(false)
+            isTyping.set(false)
             typewriter.set("")
         }
     }
